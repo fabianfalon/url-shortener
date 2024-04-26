@@ -12,7 +12,6 @@ MONGO_URL = os.environ.get("MONGO_URL", "mongodb://url-shortener-mongodb:27017")
 
 class AbstractMongoRepository(ABC):
     def __init__(self) -> None:
-        self.mongo_url = MONGO_URL
         self.client = motor.motor_asyncio.AsyncIOMotorClient(MONGO_URL)
         self.database = self.client["url-shortener"]
         self.collection = self.database["urls"]
