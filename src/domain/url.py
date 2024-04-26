@@ -19,9 +19,7 @@ class Url(AggregateRoot):
     created_at: datetime
     updated_at: datetime
 
-    def __init__(
-        self, url: str, short_url: str, created_at: datetime = None, updated_at: datetime = None
-    ) -> None:
+    def __init__(self, url: str, short_url: str, created_at: datetime = None, updated_at: datetime = None) -> None:
         self._url = UrlField(url)
         self.short_url = short_url
         self.created_at = created_at if created_at else datetime.now()
