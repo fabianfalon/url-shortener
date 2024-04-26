@@ -20,8 +20,9 @@ class Url(AggregateRoot):
     updated_at: datetime
 
     def __init__(
-        self, url: str, short_url: str, created_at: datetime = None, updated_at: datetime = None
+            self, id: int, url: str, short_url: str, created_at: datetime = None, updated_at: datetime = None
     ) -> None:
+        self.id = id
         self._url = UrlField(url)
         self.short_url = short_url
         self.created_at = created_at if created_at else datetime.now()
@@ -32,7 +33,20 @@ class Url(AggregateRoot):
         return self._url.value
 
     def to_primitive(self):
-        return self.__dict__
+        return {
+            "id": self.id,
+            "url": self.url,
+            "short_url": self.short_url,
+            "created_at": self.created_at,
+            "updated_at": self.updated_at,
+        }
 
-    def from_primitive(self, raw_data: dict):
-        return Url(**raw_data)
+    @staticmethod
+    def from_primitive(raw_data: dict):
+        return Url(
+            id=raw_data["id"],
+            url=raw_data["url"],
+            short_url=raw_data["short_url"],
+            created_at=raw_data["created_at"],
+            updated_at=raw_data["updated_at"]
+        )

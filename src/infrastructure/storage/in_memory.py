@@ -20,10 +20,10 @@ class InMemoryRepository(UrlRepository):
     async def find_all(self) -> List[Url]:
         return self._urls
 
-    async def get_by_original_url(self, original_url) -> Optional[Url]:
+    async def get_by_original_url(self, original_url: str) -> Optional[Url]:
         return next(filter(lambda x: (x.url == original_url), self._urls), None)
 
-    async def get_by_short_url(self, short_url) -> Optional[Url]:
+    async def get_by_short_url(self, short_url: str) -> Optional[Url]:
         return next(filter(lambda x: (x.short_url == short_url), self._urls), None)
 
     def clear(self):
