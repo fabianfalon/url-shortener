@@ -6,16 +6,13 @@
 
 This URL shortener allows users to input a long URL and generate an equivalent short URL. Users can then use the generated short URL to quickly access the original URL.
 
-## Features
-
-- Shortens long URLs into short URLs.
-- Automatically redirects users from the short URL to the original URL.
-- Allows customization of the generated short URL (optional).
-- Provides basic statistics on the usage of shortened URLs.
-
 ## TODO
-[] Implement frontend
-[] Add some cache mechanism
+- [x] Shortens long URLs into short URLs.
+- [x] Get original URLs by short URL.
+- [x] tests apis.
+- [] test use case.
+- [] Implement frontend.
+- [] Add some cache mechanism.
 
 ## Local run
 ````pip install -r requirements.txt```` or ````pip install -r requirements-tests.txt````
