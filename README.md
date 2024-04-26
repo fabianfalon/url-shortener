@@ -1,0 +1,43 @@
+# FastAPI URL Shortener
+
+🐍 Basic example of a URL shortener project developed using FastAPI, a modern Python web framework.
+
+## Description
+
+This URL shortener allows users to input a long URL and generate an equivalent short URL. Users can then use the generated short URL to quickly access the original URL.
+
+## Features
+
+- Shortens long URLs into short URLs.
+- Automatically redirects users from the short URL to the original URL.
+- Allows customization of the generated short URL (optional).
+- Provides basic statistics on the usage of shortened URLs.
+
+## TODO
+[] Implement frontend
+[] Add some cache mechanism
+
+## Local run
+````pip install -r requirements.txt```` or ````pip install -r requirements-tests.txt````
+___
+````uvicorn src.main:app --host 0.0.0.0 --port 5000 --reload````
+
+### Run test
+````python -m pytest````
+
+````python -m pytest --cov=src````
+
+# Ruff commands
+Check linters errors
+````ruff check src````
+
+Check format errors
+````ruff format -- check src````
+
+Fix imports order
+
+````ruff --fix src````
+
+Fix file format
+
+````ruff format src````
