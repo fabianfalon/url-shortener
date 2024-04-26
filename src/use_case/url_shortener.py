@@ -15,6 +15,6 @@ class UrlShortenerUseCase:
         if exists:
             return exists
         short_url = self.shorter.shorten_url(_count)
-        url = Url(url=original_url, short_url=short_url)
+        url = Url(id=_count, url=original_url, short_url=short_url)
         await self.repository.save(url)
         return url
