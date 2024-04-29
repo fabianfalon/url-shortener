@@ -10,21 +10,26 @@ This URL shortener allows users to input a long URL and generate an equivalent s
 - [x] Shortens long URLs into short URLs.
 - [x] Get original URLs by short URL.
 - [x] tests apis.
+- [x] Add some cache mechanism.
 - [ ] test use case.
 - [ ] Implement frontend.
-- [x] Add some cache mechanism.
 
 ## Local run
 ````pip install -r requirements.txt```` or ````pip install -r requirements-tests.txt````
 ___
 ````uvicorn src.main:app --host 0.0.0.0 --port 5000 --reload````
 
-### Run test
+## Run test
 ````python -m pytest````
 
 ````python -m pytest --cov=src````
 
-# Ruff commands
+## Docker run
+````docker-compose build````
+
+````docker-compose up````
+
+## Ruff commands
 Check linters errors
 ````ruff check src````
 
