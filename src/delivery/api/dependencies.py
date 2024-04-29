@@ -19,13 +19,15 @@ def get_url_mongo_repository() -> UrlRepository:
     return MongoRepository()
 
 
+def get_url_cache_repository() -> CacheAbstract:
+    return MemcachedRepository()
+
+
 def get_url_shortener_use_case() -> UrlShortenerUseCase:
-    return UrlShortenerUseCase(url_repository=get_url_mongo_repository(), shorter=get_shortener())
+    return UrlShortenerUseCase(
+        url_repository=get_url_mongo_repository(), shorter=get_shortener(), cache=get_url_cache_repository()
+    )
 
 
 def get_original_url_use_case() -> GetOriginalUrlUseCase:
-    return GetOriginalUrlUseCase(url_repository=get_url_mongo_repository())
-
-
-def get_url_cache_repository() -> CacheAbstract:
-    return MemcachedRepository()
+    return GetOriginalUrlUseCase(url_repository=get_url_mongo_repository(), cache=get_url_cache_repository())
