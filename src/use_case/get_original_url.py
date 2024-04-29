@@ -1,9 +1,9 @@
 from src.domain.url_repository import UrlRepository
-from src.infrastructure.storage.memcached import CacheAbstract
+from src.infrastructure.storage.memcached import AbstractCacheRepository
 
 
 class GetOriginalUrlUseCase:
-    def __init__(self, url_repository: UrlRepository, cache: CacheAbstract):
+    def __init__(self, url_repository: UrlRepository, cache: AbstractCacheRepository):
         self.repository = url_repository
         self.cache = cache
 
