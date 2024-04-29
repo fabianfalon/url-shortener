@@ -10,9 +10,9 @@ This URL shortener allows users to input a long URL and generate an equivalent s
 - [x] Shortens long URLs into short URLs.
 - [x] Get original URLs by short URL.
 - [x] tests apis.
-- [] test use case.
-- [] Implement frontend.
-- [] Add some cache mechanism.
+- [ ] test use case.
+- [ ] Implement frontend.
+- [x] Add some cache mechanism.
 
 ## Local run
 ````pip install -r requirements.txt```` or ````pip install -r requirements-tests.txt````
