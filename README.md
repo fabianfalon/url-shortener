@@ -11,7 +11,7 @@ This URL shortener allows users to input a long URL and generate an equivalent s
 - [x] Get original URLs by short URL.
 - [x] tests apis.
 - [x] Add some cache mechanism.
-- [ ] test use case.
+- [x] test use case.
 - [ ] Implement frontend.
 
 ## Local run

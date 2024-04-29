@@ -1,11 +1,11 @@
 from src.domain.url import Url
 from src.domain.url_repository import UrlRepository
 from src.infrastructure.shortener.shortener import URLShortener
-from src.infrastructure.storage.memcached import CacheAbstract
+from src.infrastructure.storage.memcached import AbstractCacheRepository
 
 
-class UrlShortenerUseCase:
-    def __init__(self, url_repository: UrlRepository, shorter: URLShortener, cache: CacheAbstract):
+class CreateShortUrlUseCase:
+    def __init__(self, url_repository: UrlRepository, shorter: URLShortener, cache: AbstractCacheRepository):
         self.repository = url_repository
         self.shorter = shorter
         self.cache = cache
