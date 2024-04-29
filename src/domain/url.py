@@ -20,7 +20,7 @@ class Url(AggregateRoot):
     updated_at: datetime
 
     def __init__(
-            self, id: int, url: str, short_url: str, created_at: datetime = None, updated_at: datetime = None
+        self, id: int, url: str, short_url: str, created_at: datetime = None, updated_at: datetime = None
     ) -> None:
         self.id = id
         self._url = UrlField(url)
@@ -48,5 +48,5 @@ class Url(AggregateRoot):
             url=raw_data["url"],
             short_url=raw_data["short_url"],
             created_at=raw_data["created_at"],
-            updated_at=raw_data["updated_at"]
+            updated_at=raw_data["updated_at"],
         )

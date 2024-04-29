@@ -48,5 +48,5 @@ class MongoRepository(AbstractMongoRepository, UrlRepository):
     def _create_url(raw_data: Dict) -> Url:
         return Url.from_primitive(raw_data)
 
-    async def delete(self, url_id: str) -> None:
+    async def delete(self, url_id: str) -> None:  # Noncompliant - method is empty
         pass
