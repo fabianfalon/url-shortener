@@ -4,7 +4,7 @@ from typing import Dict, List, Optional
 
 import motor.motor_asyncio
 
-from src.domain.url import Url
+from src.domain.url import AggregateRoot, Url
 from src.domain.url_repository import UrlRepository
 
 MONGO_URL = os.environ.get("MONGO_URL", "mongodb://url-shortener-mongodb:27017")
@@ -16,7 +16,7 @@ class AbstractMongoRepository(ABC):
         self.database = self.client["url-shortener"]
         self.collection = self.database["urls"]
 
-    async def save(self, aggregate_root: object) -> None:
+    async def save(self, aggregate_root: AggregateRoot) -> None:
         document = aggregate_root.to_primitive()
         document["id"] = int(document["id"]) + 1
         await self.collection.insert_one(aggregate_root.to_primitive())
@@ -38,15 +38,15 @@ class MongoRepository(AbstractMongoRepository, UrlRepository):
 
     async def get_by_original_url(self, original_url: str) -> Optional[Url]:
         url = await self.collection.find_one({"url": original_url})
-        return self._create_url(url) if url else None
+        return self._create_url(dict(url)) if url else None
 
     async def get_by_short_url(self, short_url: str) -> Optional[Url]:
         url = await self.collection.find_one({"short_url": short_url})
-        return self._create_url(url) if url else None
+        return self._create_url(dict(url)) if url else None
 
     @staticmethod
     def _create_url(raw_data: Dict) -> Url:
         return Url.from_primitive(raw_data)
 
-    async def delete(self, url_id: str) -> None:  # Noncompliant - method is empty
+    async def delete(self, url_id: str) -> None:  # Noncompliance - method is empty
         pass

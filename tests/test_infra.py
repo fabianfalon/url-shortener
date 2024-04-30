@@ -23,7 +23,7 @@ class TestInfrastructure:
 
     def test_dto_url_out_ko(self):
         with pytest.raises(ValidationError) as error:
-            UrlResponseOut(url="no-url")
+            UrlResponseOut(url="invalid-url")
         expect(
             json.loads(error.value.json())[0].get("msg")).to(
             equal("Input should be a valid URL, relative URL without a base")
