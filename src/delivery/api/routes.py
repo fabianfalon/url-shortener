@@ -20,7 +20,7 @@ async def shortener(
     use_case: CreateShortUrlUseCase = Depends(get_url_shortener_use_case),
 ) -> UrlResponseOut:
     base_url = "http://localhost:8000/"
-    original_url = payload.url
+    original_url = payload.url.unicode_string()
     url = await use_case.execute(original_url)
     return UrlResponseOut(url=f"{base_url}{url}")
 

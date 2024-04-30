@@ -8,8 +8,9 @@ class AggregateRoot(ABC):
     @abstractmethod
     def to_primitive(self): ...
 
+    @staticmethod
     @abstractmethod
-    def from_primitive(self, raw_data: dict): ...
+    def from_primitive(raw_data: dict): ...
 
 
 class Url(AggregateRoot):

@@ -10,9 +10,9 @@ class GetOriginalUrlUseCase:
         self.cache = cache
 
     async def execute(self, short_url: str) -> Optional[str]:
-        value = self.cache.get(short_url)
-        if value:
-            return value
+        cached_url = self.cache.get(short_url)
+        if cached_url:
+            return cached_url
         url = await self.repository.get_by_short_url(short_url)
         if not url:
             return None
