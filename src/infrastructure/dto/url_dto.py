@@ -1,9 +1,9 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, AnyHttpUrl
 
 
 class UrlPayloadIn(BaseModel):
-    url: str
+    url: AnyHttpUrl
 
 
 class UrlResponseOut(BaseModel):
-    url: str
+    url: AnyHttpUrl
