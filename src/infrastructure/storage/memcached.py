@@ -26,7 +26,6 @@ class MemcachedRepository(AbstractCacheRepository):
 
 
 class InMemoryCacheRepository(AbstractCacheRepository):
-
     mapping = {}
 
     def set(self, key, value):

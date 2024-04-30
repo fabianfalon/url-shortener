@@ -34,7 +34,6 @@ async def get_original_url(
     short_url: str,
     use_case: GetOriginalUrlUseCase = Depends(get_original_url_use_case),
 ) -> UrlResponseOut:
-
     url = await use_case.execute(short_url)
     if not url:
         raise HTTPException(status_code=404, detail="Url not found")
