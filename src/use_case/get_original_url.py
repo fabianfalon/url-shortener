@@ -1,3 +1,5 @@
+from typing import Optional
+
 from src.domain.url_repository import UrlRepository
 from src.infrastructure.storage.memcached import AbstractCacheRepository
 
@@ -7,10 +9,12 @@ class GetOriginalUrlUseCase:
         self.repository = url_repository
         self.cache = cache
 
-    async def execute(self, short_url: str) -> str:
+    async def execute(self, short_url: str) -> Optional[str]:
         value = self.cache.get(short_url)
         if value:
             return value
         url = await self.repository.get_by_short_url(short_url)
+        if not url:
+            return None
         self.cache.set(short_url, url.url)
         return url.url

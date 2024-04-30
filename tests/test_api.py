@@ -8,12 +8,13 @@ class TestApi:
     client = TestClient(app)
 
 
-class TestCoursesApi(TestApi):
+class TestURLShortenerApi(TestApi):
 
     def test_create_short_url(self, mock_create_short_url_use_case):
         data = {"url": "https://probando.com/121323"}
         response = self.client.post("/shortener", json=data)
         expect(response.status_code).to(be(status.HTTP_200_OK))
+        expect(response.json().get("url")).to(equal("http://localhost:8000/6b86b273"))
 
     def test_get_original_url(self, mock_create_short_url_use_case, mock_get_original_url_use_case):
         data = {"url": "https://probando.com/121323"}

@@ -3,6 +3,8 @@ from fastapi import status as http_status
 
 from src.delivery.api.dependencies import get_original_url_use_case, get_url_shortener_use_case
 from src.infrastructure.dto.url_dto import UrlPayloadIn, UrlResponseOut
+from src.use_case.get_original_url import GetOriginalUrlUseCase
+from src.use_case.url_shortener import CreateShortUrlUseCase
 
 # Router Config
 router = APIRouter(tags=["url shortener"])
@@ -15,7 +17,7 @@ router = APIRouter(tags=["url shortener"])
 )
 async def shortener(
     payload: UrlPayloadIn,
-    use_case=Depends(get_url_shortener_use_case),
+    use_case: CreateShortUrlUseCase = Depends(get_url_shortener_use_case),
 ) -> UrlResponseOut:
     base_url = "http://localhost:8000/"
     original_url = payload.url
@@ -30,9 +32,8 @@ async def shortener(
 )
 async def get_original_url(
     short_url: str,
-    use_case=Depends(get_original_url_use_case),
+    use_case: GetOriginalUrlUseCase = Depends(get_original_url_use_case),
 ) -> UrlResponseOut:
-
     url = await use_case.execute(short_url)
     if not url:
         raise HTTPException(status_code=404, detail="Url not found")
