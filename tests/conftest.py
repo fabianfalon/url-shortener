@@ -6,7 +6,7 @@ MOCK_SHORT_URL = "6b86b273"
 
 @pytest.fixture
 def mock_create_short_url_use_case(mocker):
-    mocker.patch("src.use_case.url_shortener.CreateShortUrlUseCase.execute", return_value=MOCK_SHORT_URL)
+    mocker.patch("src.use_case.create_short_url.CreateShortUrlUseCase.execute", return_value=MOCK_SHORT_URL)
     return MOCK_SHORT_URL
 
 
