@@ -24,9 +24,7 @@ class CreateShortUrlUseCase:
         short_url = self.shorter.shorten_url(next_id)
         url = Url(id=next_id, url=original_url, short_url=short_url)
         await self.repository.save(url)
-        # esta bien que se se persista en cache url original y corta acá?
         self.cache.set(original_url, url.short_url)
-        self.cache.set(existing_url.short_url, original_url)
         return url.short_url
 
     async def _get_next_url_id(self) -> int:

@@ -4,7 +4,7 @@ from fastapi import status as http_status
 from src.delivery.api.dependencies import get_original_url_use_case, get_url_shortener_use_case
 from src.infrastructure.dto.url_dto import UrlPayloadIn, UrlResponseOut
 from src.use_case.get_original_url import GetOriginalUrlUseCase
-from src.use_case.url_shortener import CreateShortUrlUseCase
+from src.use_case.create_short_url import CreateShortUrlUseCase
 
 # Router Config
 router = APIRouter(tags=["url shortener"])
