@@ -1,7 +1,6 @@
 # FastAPI URL Shortener
 
-🐍 Basic example of a URL shortener project developed using FastAPI, a modern Python web framework.
-
+🐍 Basic example of a URL shortener project developed using FastAPI.
 ## Description
 
 This URL shortener allows users to input a long URL and generate an equivalent short URL. Users can then use the generated short URL to quickly access the original URL.
