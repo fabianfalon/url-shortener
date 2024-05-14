@@ -21,6 +21,7 @@ class ServerSettings(BaseSettings):
     graceful_timeout: int = 120
     timeout: int = 120
     keep_alive: int = 5
+    base_short_url: str = "http://localhost:5000/"
 
 
 class LocationSettings(BaseSettings):
