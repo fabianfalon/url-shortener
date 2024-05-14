@@ -22,7 +22,7 @@ class CreateShortUrlUseCase:
 
         next_id = await self._get_next_url_id()
         short_url = self.shorter.shorten_url(next_id)
-        url = Url(id=next_id, url=original_url, short_url=short_url)
+        url = Url(_id=next_id, url=original_url, short_url=short_url)
         await self.repository.save(url)
         self.cache.set(original_url, url.short_url)
         return url.short_url
